@@ -38,7 +38,13 @@ const render = () => {
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height, -((index * (speed / 2)) % canvas.width) + canvas.width, 0, canvas.width, canvas.height);
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height, -(index * (speed / 2)) % canvas.width, 0, canvas.width, canvas.height);
 
+    document.getElementById('bestScore').innerHTML = `Meilleur : ${bestScore}`;
+    document.getElementById('currentScore').innerHTML = `Actuel : ${currentScore}`;
+
     window.requestAnimationFrame(render);
 }
 setup();
 img.onload = render;
+
+document.addEventListener('click', () => gamePlaying = true);
+window.onclick = () => flight = jump;
