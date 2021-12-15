@@ -17,3 +17,19 @@ let index = 0,
     flyHeight, 
     currentScore, 
     pipe;
+
+// paramétre des pipes
+const pipeWidth = 78;
+const pipeGap = 270;
+const pipeLoc = () => (Math.random() * ((canvas.height - (pipeGap + pipeWidth)) - pipeWidth)) + pipeWidth;
+
+const setup = () => {
+  currentScore = 0;
+  flight = jump;
+
+  // initialisation du flyHeight
+  flyHeight = (canvas.height / 2) - (size[1] / 2);
+
+  // paramétrage des 3 premiers pipes
+  pipes = Array(3).fill().map((a, i) => [canvas.width + (i * (pipeGap + pipeWidth)), pipeLoc()]);
+}
