@@ -3,6 +3,8 @@ const ctx = canvas.getContext('2d');
 const img = new Image();
 img.src = "../images/flappy-bird-set.png";
 
+
+
 // variables
 let gamePlaying = false;
 const gravity = .5;
@@ -22,6 +24,17 @@ let index = 0,
 const pipeWidth = 78;
 const pipeGap = 270;
 const pipeLoc = () => (Math.random() * ((canvas.height - (pipeGap + pipeWidth)) - pipeWidth)) + pipeWidth;
+
+function makePostRequest() {
+  axios({
+      method: 'post',
+      url: '/test',
+      data: {
+          bestsc : bestScore,
+          currentsc : currentScore,
+      }
+  });
+}
 
 const setup = () => {
   currentScore = 0;
@@ -69,8 +82,9 @@ const render = () => {
       ctx.fillText('Cliquez pour jouer', 48, 535);
       ctx.font = "bold 30px courier";
     }
-    document.getElementById('bestScore').innerHTML = `Meilleur : ${bestScore}`;
-    document.getElementById('currentScore').innerHTML = `Actuel : ${currentScore}`;
+    makePostRequest();
+    //document.getElementById('bestScore').innerHTML = `Meilleur : ${bestScore}`;
+    //document.getElementById('currentScore').innerHTML = `Actuel : ${currentScore}`;
 
     window.requestAnimationFrame(render);
 }

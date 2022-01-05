@@ -1,11 +1,13 @@
 <%- include('header'); %>
 <header>
     <h1>Flappy Dino</h1>
+    
       <div class="score-container">
-        <div id="bestScore"></div>
-        <div id="currentScore"></div>
+        <div id="bestScore"><%= myobject.best %></div>
+        <div id="currentScore"><%= myobject.current %></div>
       </div>
     </header>
     <canvas id="canvas" width="431" height="768"></canvas>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="js/script.js"></script>
 <%- include('footer'); %>
