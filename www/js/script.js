@@ -84,7 +84,7 @@ const render = () => {
     }
     makePostRequest();
     //document.getElementById('bestScore').innerHTML = `Meilleur : ${bestScore}`;
-    //document.getElementById('currentScore').innerHTML = `Actuel : ${currentScore}`;
+    document.getElementById('currentScore').innerHTML = `Actuel : ${currentScore}`;
 
     window.requestAnimationFrame(render);
 }

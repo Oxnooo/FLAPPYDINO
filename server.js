@@ -6,7 +6,8 @@ let bodyparser = require('body-parser') ;
 app.set( 'view engine','ejs') ;
 
 let myobject = {
-    best : 0 ,
+    nom : "monobjet",
+    best :  0,
     current : 0
 }
 
@@ -22,18 +23,20 @@ app.listen(port, () => {
 })
 
 app.get('/', (req , res, next) => {
-    res.render('index.ejs',{best : myobject});
-    res.render('index.ejs',{current : myobject});
+    console.log(myobject.best);
+    res.render('index.ejs',{monobjet : myobject});
+    
+    
 });
 
 app.post('/test',(req,res,next ) => {
-    console.log(req.body.bestsc);
-    console.log(req.body.currentsc); 
-    myobject = {
-        best : req.body.bestsc ,
-        current : req.body.currentsc
-    }
+    //console.log(req.body.bestsc);
+    //console.log(req.body.currentsc); 
+    myobject.best = req.body.bestsc;
+    myobject.current = req.body.currentsc;
+    
     res.redirect('/');
+   
 });
 
 
